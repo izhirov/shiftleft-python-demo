@@ -23,7 +23,7 @@ jobs:
       run: |
         pip install --upgrade setuptools wheel
         pip install -r requirements.txt
-        ${GITHUB_WORKSPACE}/sl analyze --strict --wait --app shiftleft-python-demo --container 18fgsa/s3-resource --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --python $(pwd)
+        ${GITHUB_WORKSPACE}/sl analyze --strict --wait --app shiftleft-python-demo --container 18fgsa/s3-resource --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --tag foo=bar --python $(pwd)
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
         
@@ -32,7 +32,7 @@ jobs:
     - name: Legacy Static Analysis
       run: |
         echo "Please update your `shiftleft-python-demo` fork!"
-        ${GITHUB_WORKSPACE}/sl analyze --strict --wait --no-cpg --app shiftleft-python-demo --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --python $(pwd)
+        ${GITHUB_WORKSPACE}/sl analyze --strict --wait --no-cpg --app shiftleft-python-demo --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --tag foo=bar --python $(pwd)
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
         
