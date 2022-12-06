@@ -23,7 +23,7 @@ jobs:
       run: |
         pip install --upgrade setuptools wheel
         pip install -r requirements.txt
-        ${GITHUB_WORKSPACE}/sl analyze --strict --wait --app shiftleft-python-demo --container 18fgsa/s3-resource --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --tag foo=bar --python $(pwd)
+        ${GITHUB_WORKSPACE}/sl analyze --strict --wait --app shiftleft-python-demo --container 18fgsa/s3-resource --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --tag foo=bar --finding-tag bar=foo --python $(pwd)
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
         
